@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - ITSM Incident Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        .card-icon {
+            font-size: 2.5rem;
+            opacity: 0.8;
+        }
+        .dashboard-card {
+            transition: transform 0.2s;
+        }
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><i class="bi bi-shield-check me-2"></i>ITSM System</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" th:href="@{/}"><i class="bi bi-speedometer2 me-1"></i>Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/incidents}"><i class="bi bi-list-task me-1"></i>Incidents</a>
+                </li>
+            </ul>
+            <span class="navbar-text me-3">
+                <i class="bi bi-person-circle me-1"></i>Welcome, <span th:text="${#authentication.name}">User</span>
+            </span>
+            <form th:action="@{/logout}" method="post" class="d-flex">
+                <button class="btn btn-outline-light btn-sm" type="submit"><i class="bi bi-box-arrow-right me-1"></i>Logout</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="p-5 bg-light rounded-3 shadow-sm">
+                <div class="container-fluid py-2">
+                    <h1 class="display-5 fw-bold"><i class="bi bi-activity me-2"></i>ITSM Dashboard</h1>
+                    <p class="col-md-8 fs-4">Overview of your incident management status.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <!-- Total Incidents -->
+        <div class="col-md-3">
+            <div class="card text-white bg-primary h-100 dashboard-card shadow">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="card-title">Total Incidents</h5>
+                        <h2 class="display-4 fw-bold" th:text="${totalIncidents}">0</h2>
+                    </div>
+                    <i class="bi bi-folder2-open card-icon"></i>
+                </div>
+                <div class="card-footer bg-transparent border-0">
+                    <a th:href="@{/incidents}" class="text-white text-decoration-none">View All <i class="bi bi-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- New Incidents -->
+        <div class="col-md-3">
+            <div class="card text-white bg-info h-100 dashboard-card shadow">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="card-title">New</h5>
+                        <h2 class="display-4 fw-bold" th:text="${newIncidents}">0</h2>
+                    </div>
+                    <i class="bi bi-plus-circle card-icon"></i>
+                </div>
+                <div class="card-footer bg-transparent border-0">
+                    <small>Needs Attention</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- In Progress -->
+        <div class="col-md-3">
+            <div class="card text-white bg-warning h-100 dashboard-card shadow">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="card-title">In Progress</h5>
+                        <h2 class="display-4 fw-bold" th:text="${inProgressIncidents}">0</h2>
+                    </div>
+                    <i class="bi bi-hourglass-split card-icon"></i>
+                </div>
+                <div class="card-footer bg-transparent border-0">
+                    <small>Currently Working</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resolved/Closed -->
+        <div class="col-md-3">
+            <div class="card text-white bg-success h-100 dashboard-card shadow">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="card-title">Resolved</h5>
+                        <h2 class="display-4 fw-bold" th:text="${resolvedIncidents}">0</h2>
+                    </div>
+                    <i class="bi bi-check-circle card-icon"></i>
+                </div>
+                <div class="card-footer bg-transparent border-0">
+                    <small>Good Job!</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mt-4">
+         <div class="col-md-12 text-center">
+             <a class="btn btn-outline-primary btn-lg" th:href="@{/showNewIncidentForm}" role="button">
+                <i class="bi bi-plus-lg me-2"></i>Create New Incident
+             </a>
+         </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
