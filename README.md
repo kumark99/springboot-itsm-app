@@ -162,3 +162,7 @@ curl -X POST http://localhost:8081/api/incidents \
     "reportedBy": {"id": 1}
 }'
 ```
+### Application screenshot
+Login page
+<img width="429" height="449" alt="image" src="https://github.com/user-attachments/assets/860ffa25-2acd-4b12-bc95-7f103e0a5383" />
+
