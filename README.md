@@ -163,6 +163,18 @@ curl -X POST http://localhost:8081/api/incidents \
 }'
 ```
 ### Application screenshot
-Login page
+##### Login page
 <img width="429" height="449" alt="image" src="https://github.com/user-attachments/assets/860ffa25-2acd-4b12-bc95-7f103e0a5383" />
+
+##### Landing page
+<img width="758" height="273" alt="image" src="https://github.com/user-attachments/assets/e682430f-afe6-4ea0-9db2-f41776bf13b3" />
+
+###### List Page
+<img width="1505" height="353" alt="image" src="https://github.com/user-attachments/assets/1ea4b7a9-972f-4d65-aafd-be6c37a6d49d" />
+
+##### Add new Incident Page
+<img width="726" height="392" alt="image" src="https://github.com/user-attachments/assets/33c9411b-e96a-48a0-96dc-7cf5d3adfd30" />
+
+
+
 
